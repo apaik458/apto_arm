@@ -1,0 +1,191 @@
+<?xml version="1.0" ?>
+<!-- Generated using onshape-to-robot -->
+<!-- Onshape https://cad.onshape.com/documents/5ed8cfb61595789d024e1257/w/f4ea8e71bb659e73bc33b59e/e/9b60ff3bf030ff376f436c83 -->
+<mujoco model="apto_arm">
+  <compiler angle="radian" meshdir="meshes" autolimits="true"/>
+  <default>
+    <default class="apto_arm">
+      <joint frictionloss="0.1" armature="0.005"/>
+      <position kp="50" dampratio="1"/>
+      <default class="visual">
+        <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+      </default>
+      <default class="collision">
+        <geom group="3"/>
+      </default>
+    </default>
+  </default>
+  <worldbody>
+    <!-- Link base -->
+    <body name="base" pos="0 0 0" quat="1 0 0 0" childclass="apto_arm">
+      <inertial pos="-0.0103642 2.52464e-07 0.017584" mass="0.203812" fullinertia="0.000103332 0.000141349 0.000178463 -7.28984e-09 1.49851e-05 -6.94405e-09"/>
+      <!-- Part abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6 -->
+      <geom type="mesh" class="visual" pos="-0.0615496 0.014 0.0483" quat="0.707107 0 0 -0.707107" mesh="abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6" material="abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6_material"/>
+      <geom type="mesh" class="collision" pos="-0.0615496 0.014 0.0483" quat="0.707107 0 0 -0.707107" mesh="abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6" material="abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6_material"/>
+      <!-- Part simplified_part -->
+      <geom type="mesh" class="visual" pos="-0.0300996 1.04083e-17 0.0336" quat="0 0 -0.707107 -0.707107" mesh="simplified_part" material="simplified_part_material"/>
+      <geom type="mesh" class="collision" pos="-0.0300996 1.04083e-17 0.0336" quat="0 0 -0.707107 -0.707107" mesh="simplified_part" material="simplified_part_material"/>
+      <!-- Part pcbframe -->
+      <geom type="mesh" class="visual" pos="-0.0525496 0.019 0.0063" quat="0.707107 0 0 -0.707107" mesh="pcbframe" material="pcbframe_material"/>
+      <geom type="mesh" class="collision" pos="-0.0525496 0.019 0.0063" quat="0.707107 0 0 -0.707107" mesh="pcbframe" material="pcbframe_material"/>
+      <!-- Part basethrust -->
+      <geom type="mesh" class="visual" pos="-0.00459957 1.04083e-17 0.0375" quat="1 -0 -0 -0" mesh="basethrust" material="basethrust_material"/>
+      <geom type="mesh" class="collision" pos="-0.00459957 1.04083e-17 0.0375" quat="1 -0 -0 -0" mesh="basethrust" material="basethrust_material"/>
+      <!-- Part simplified_part_2 -->
+      <geom type="mesh" class="visual" pos="-0.0631496 0.0165 0.0508" quat="5.19201e-17 -0.707107 0 0.707107" mesh="simplified_part__2" material="simplified_part__2_material"/>
+      <geom type="mesh" class="collision" pos="-0.0631496 0.0165 0.0508" quat="5.19201e-17 -0.707107 0 0.707107" mesh="simplified_part__2" material="simplified_part__2_material"/>
+      <!-- Part abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6_2 -->
+      <geom type="mesh" class="visual" pos="-0.0615496 0.014 0.0113" quat="0.707107 0 0 -0.707107" mesh="abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6" material="abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6_material"/>
+      <geom type="mesh" class="collision" pos="-0.0615496 0.014 0.0113" quat="0.707107 0 0 -0.707107" mesh="abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6" material="abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6_material"/>
+      <!-- Part abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6_3 -->
+      <geom type="mesh" class="visual" pos="-0.0615496 -0.014 0.0483" quat="0.707107 0 0 -0.707107" mesh="abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6" material="abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6_material"/>
+      <geom type="mesh" class="collision" pos="-0.0615496 -0.014 0.0483" quat="0.707107 0 0 -0.707107" mesh="abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6" material="abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6_material"/>
+      <!-- Part base -->
+      <geom type="mesh" class="visual" pos="-0.0480496 -0.045 0" quat="1 0 0 0" mesh="base" material="base_material"/>
+      <geom type="mesh" class="collision" pos="-0.0480496 -0.045 0" quat="1 0 0 0" mesh="base" material="base_material"/>
+      <!-- Part abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6_4 -->
+      <geom type="mesh" class="visual" pos="-0.0615496 -0.014 0.0113" quat="0.707107 0 0 -0.707107" mesh="abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6" material="abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6_material"/>
+      <geom type="mesh" class="collision" pos="-0.0615496 -0.014 0.0113" quat="0.707107 0 0 -0.707107" mesh="abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6" material="abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6_material"/>
+      <!-- Link baseframe -->
+      <body name="baseframe" pos="-0.00459957 1.12999e-17 0.0433" quat="0 1 0 0">
+        <!-- Joint from base to baseframe -->
+        <joint axis="0 0 1" name="1" type="hinge" range="-1.3962634015954636 1.3962634015954636"/>
+        <inertial pos="-0.000226919 0.000173064 -0.0212401" mass="0.0858067" fullinertia="2.59297e-05 2.72242e-05 1.95017e-05 -8.51563e-10 -1.54207e-07 4.58121e-08"/>
+        <!-- Part simplified_part_3 -->
+        <geom type="mesh" class="visual" pos="-2.42861e-17 -0.009025 -0.0145" quat="9.62066e-17 0.707107 -0 0.707107" mesh="simplified_part__3" material="simplified_part__3_material"/>
+        <geom type="mesh" class="collision" pos="-2.42861e-17 -0.009025 -0.0145" quat="9.62066e-17 0.707107 -0 0.707107" mesh="simplified_part__3" material="simplified_part__3_material"/>
+        <!-- Part baseframe -->
+        <geom type="mesh" class="visual" pos="0 2.44929e-19 0" quat="0 1 0 0" mesh="baseframe" material="baseframe_material"/>
+        <geom type="mesh" class="collision" pos="0 2.44929e-19 0" quat="0 1 0 0" mesh="baseframe" material="baseframe_material"/>
+        <!-- Link link1 -->
+        <body name="link1" pos="-2.68882e-17 -0.019 -0.04" quat="0.5 -0.5 0.5 0.5">
+          <!-- Joint from baseframe to link1 -->
+          <joint axis="0 0 1" name="2" type="hinge" range="-1.3962634015954636 1.3962634015954636"/>
+          <inertial pos="0.107494 -0.00536826 0.018862" mass="0.190598" fullinertia="5.31201e-05 0.000640799 0.00064269 5.90405e-05 -9.58969e-07 2.5701e-07"/>
+          <!-- Part link1 -->
+          <geom type="mesh" class="visual" pos="0.0414998 -0.0125 0.0315" quat="0.707107 -0.707107 0 0" mesh="link1" material="link1_material"/>
+          <geom type="mesh" class="collision" pos="0.0414998 -0.0125 0.0315" quat="0.707107 -0.707107 0 0" mesh="link1" material="link1_material"/>
+          <!-- Part simplified_part_4 -->
+          <geom type="mesh" class="visual" pos="0.16525 -0.00475 0.009975" quat="0.5 -0.5 -0.5 0.5" mesh="simplified_part__3" material="simplified_part__3_material"/>
+          <geom type="mesh" class="collision" pos="0.16525 -0.00475 0.009975" quat="0.5 -0.5 -0.5 0.5" mesh="simplified_part__3" material="simplified_part__3_material"/>
+          <!-- Link mframe -->
+          <body name="mframe" pos="0.16525 -0.03025 0.00025" quat="0.707107 -0 1.60723e-16 -0.707107">
+            <!-- Joint from link1 to mframe -->
+            <joint axis="0 0 1" name="3" type="hinge" range="-1.3962634015954636 1.3962634015954636"/>
+            <inertial pos="0.035841 0.00947294 0.0187521" mass="0.092061" fullinertia="2.92644e-05 3.04887e-05 3.62e-05 -1.75052e-06 1.77599e-09 -2.52917e-09"/>
+            <!-- Part mframe -->
+            <geom type="mesh" class="visual" pos="0.0225 -0.0125 0.0425" quat="0.707107 -0.707107 0 5.04921e-62" mesh="mframe" material="mframe_material"/>
+            <geom type="mesh" class="collision" pos="0.0225 -0.0125 0.0425" quat="0.707107 -0.707107 0 5.04921e-62" mesh="mframe" material="mframe_material"/>
+            <!-- Part mthrust -->
+            <geom type="mesh" class="visual" pos="0.04675 -0.0018 0.01875" quat="9.0189e-29 -0.707107 -0 -0.707107" mesh="mthrust" material="mthrust_material"/>
+            <geom type="mesh" class="collision" pos="0.04675 -0.0018 0.01875" quat="9.0189e-29 -0.707107 -0 -0.707107" mesh="mthrust" material="mthrust_material"/>
+            <!-- Part simplified_part_5 -->
+            <geom type="mesh" class="visual" pos="0.04835 0.0237 0.01875" quat="4.32978e-17 -0.707107 -0.707107 4.32978e-17" mesh="simplified_part" material="simplified_part_material"/>
+            <geom type="mesh" class="collision" pos="0.04835 0.0237 0.01875" quat="4.32978e-17 -0.707107 -0.707107 4.32978e-17" mesh="simplified_part" material="simplified_part_material"/>
+            <!-- Link link2 -->
+            <body name="link2" pos="0.05795 -0.0018 0.01875" quat="1.55532e-28 -0.707107 0 0.707107">
+              <!-- Joint from mframe to link2 -->
+              <joint axis="0 0 1" name="4" type="hinge" range="-1.3962634015954636 1.3962634015954636"/>
+              <inertial pos="0.000330862 -7.32053e-05 -0.0605309" mass="0.0963563" fullinertia="9.44484e-05 9.80461e-05 1.88413e-05 -1.33669e-09 4.75465e-07 -1.37026e-07"/>
+              <!-- Part link2 -->
+              <geom type="mesh" class="visual" pos="0 0 0" quat="0.5 0.5 0.5 -0.5" mesh="link2" material="link2_material"/>
+              <geom type="mesh" class="collision" pos="0 0 0" quat="0.5 0.5 0.5 -0.5" mesh="link2" material="link2_material"/>
+              <!-- Part simplified_part_6 -->
+              <geom type="mesh" class="visual" pos="0.0096 -0.000125 -0.06725" quat="0.5 -0.5 -0.5 -0.5" mesh="simplified_part__3" material="simplified_part__3_material"/>
+              <geom type="mesh" class="collision" pos="0.0096 -0.000125 -0.06725" quat="0.5 -0.5 -0.5 -0.5" mesh="simplified_part__3" material="simplified_part__3_material"/>
+              <!-- Link mframe_2 -->
+              <body name="mframe_2" pos="0.019325 -0.000125 -0.09275" quat="4.41589e-17 -0.707107 -0 0.707107">
+                <!-- Joint from link2 to mframe_2 -->
+                <joint axis="0 0 1" name="5" type="hinge" range="-1.3962634015954636 1.3962634015954636"/>
+                <inertial pos="0.035841 0.00947294 0.0187521" mass="0.092061" fullinertia="2.92644e-05 3.04887e-05 3.62e-05 -1.75052e-06 1.77599e-09 -2.52917e-09"/>
+                <!-- Part mframe_2 -->
+                <geom type="mesh" class="visual" pos="0.0225 -0.0125 0.0425" quat="0.707107 -0.707107 0 -1.7335e-43" mesh="mframe" material="mframe_material"/>
+                <geom type="mesh" class="collision" pos="0.0225 -0.0125 0.0425" quat="0.707107 -0.707107 0 -1.7335e-43" mesh="mframe" material="mframe_material"/>
+                <!-- Part simplified_part_7 -->
+                <geom type="mesh" class="visual" pos="0.04835 0.0237 0.01875" quat="5.60399e-17 -0.707107 -0.707107 4.29078e-17" mesh="simplified_part" material="simplified_part_material"/>
+                <geom type="mesh" class="collision" pos="0.04835 0.0237 0.01875" quat="5.60399e-17 -0.707107 -0.707107 4.29078e-17" mesh="simplified_part" material="simplified_part_material"/>
+                <!-- Part mthrust_2 -->
+                <geom type="mesh" class="visual" pos="0.04675 -0.0018 0.01875" quat="1.87354e-30 0.707107 0 0.707107" mesh="mthrust" material="mthrust_material"/>
+                <geom type="mesh" class="collision" pos="0.04675 -0.0018 0.01875" quat="1.87354e-30 0.707107 0 0.707107" mesh="mthrust" material="mthrust_material"/>
+                <!-- Link gripperframe -->
+                <body name="gripperframe" pos="0.05795 -0.0018 0.01875" quat="1.72563e-30 0.707107 0 -0.707107">
+                  <!-- Joint from mframe_2 to gripperframe -->
+                  <joint axis="0 0 1" name="6" type="hinge" range="-1.3962634015954636 1.3962634015954636"/>
+                  <inertial pos="-0.00103237 -0.000347468 -0.0198696" mass="0.0797234" fullinertia="1.65788e-05 2.222e-05 2.2374e-05 -6.36702e-08 -5.37145e-07 -9.81503e-08"/>
+                  <!-- Part gripperframe -->
+                  <geom type="mesh" class="visual" pos="-0.0225 0.02025 -0.008" quat="0 1 0 0" mesh="gripperframe" material="gripperframe_material"/>
+                  <geom type="mesh" class="collision" pos="-0.0225 0.02025 -0.008" quat="0 1 0 0" mesh="gripperframe" material="gripperframe_material"/>
+                  <!-- Part simplified_part_8 -->
+                  <geom type="mesh" class="visual" pos="-0.0127 -0.0096 -0.0235" quat="1.38778e-16 -2.471e-16 2.22045e-16 1" mesh="simplified_part__3" material="simplified_part__3_material"/>
+                  <geom type="mesh" class="collision" pos="-0.0127 -0.0096 -0.0235" quat="1.38778e-16 -2.471e-16 2.22045e-16 1" mesh="simplified_part__3" material="simplified_part__3_material"/>
+                  <!-- Link gripper1 -->
+                  <body name="gripper1" pos="0.0128 -0.019575 -0.0235" quat="0.5 -0.5 0.5 0.5">
+                    <!-- Joint from gripperframe to gripper1 -->
+                    <joint axis="0 0 1" name="gripper" type="hinge" range="-1.3962634015954636 0.0"/>
+                    <inertial pos="0.0252127 -0.00082146 0.0196742" mass="0.015224" fullinertia="4.71998e-06 8.64173e-06 5.43151e-06 -5.79516e-07 -7.56362e-08 6.68232e-08"/>
+                    <!-- Part gripper1 -->
+                    <geom type="mesh" class="visual" pos="5.55112e-17 2.25514e-17 0.043625" quat="0 1 0 0" mesh="gripper1" material="gripper1_material"/>
+                    <geom type="mesh" class="collision" pos="5.55112e-17 2.25514e-17 0.043625" quat="0 1 0 0" mesh="gripper1" material="gripper1_material"/>
+                  </body>
+                  <!-- Link gripper2 -->
+                  <body name="gripper2" pos="-0.0125 -0.02095 -0.0235" quat="0.5 -0.5 0.5 0.5">
+                    <!-- Joint from gripperframe to gripper2 -->
+                    <joint axis="0 0 1" name="gripper2" type="hinge" range="0.0 1.3962634015954636"/>
+                    <inertial pos="0.027316 0.000770364 0.0204733" mass="0.0138224" fullinertia="4.19581e-06 7.4035e-06 4.63232e-06 5.90387e-07 -2.34226e-07 -3.40101e-08"/>
+                    <!-- Part gripper2 -->
+                    <geom type="mesh" class="visual" pos="0 0 -0.003" quat="1 0 2.22045e-16 0" mesh="gripper2" material="gripper2_material"/>
+                    <geom type="mesh" class="collision" pos="0 0 -0.003" quat="1 0 2.22045e-16 0" mesh="gripper2" material="gripper2_material"/>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <asset>
+    <mesh file="pcbframe.stl"/>
+    <mesh file="basethrust.stl"/>
+    <mesh file="simplified_part__2.stl"/>
+    <mesh file="simplified_part.stl"/>
+    <mesh file="base.stl"/>
+    <mesh file="gripperframe.stl"/>
+    <mesh file="baseframe.stl"/>
+    <mesh file="abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6.stl"/>
+    <mesh file="mframe.stl"/>
+    <mesh file="mthrust.stl"/>
+    <mesh file="link1.stl"/>
+    <mesh file="gripper1.stl"/>
+    <mesh file="simplified_part__3.stl"/>
+    <mesh file="gripper2.stl"/>
+    <mesh file="link2.stl"/>
+    <material name="abstandzbolzen_stahl_verzinkt_i_i_m2_5___ettinger___5_02_061__m2_5x6_material" rgba="0.482353 0.490196 0.494118 1"/>
+    <material name="simplified_part_material" rgba="0.196078 0.196078 0.196078 1"/>
+    <material name="pcbframe_material" rgba="0.647059 0.647059 0.647059 1"/>
+    <material name="basethrust_material" rgba="0.647059 0.647059 0.647059 1"/>
+    <material name="simplified_part__2_material" rgba="0.196078 0.196078 0.196078 1"/>
+    <material name="base_material" rgba="0.647059 0.647059 0.647059 1"/>
+    <material name="simplified_part__3_material" rgba="0.196078 0.196078 0.196078 1"/>
+    <material name="baseframe_material" rgba="0.647059 0.647059 0.647059 1"/>
+    <material name="link1_material" rgba="0.647059 0.647059 0.647059 1"/>
+    <material name="mframe_material" rgba="0.647059 0.647059 0.647059 1"/>
+    <material name="mthrust_material" rgba="0.647059 0.647059 0.647059 1"/>
+    <material name="link2_material" rgba="0.647059 0.647059 0.647059 1"/>
+    <material name="gripperframe_material" rgba="0.647059 0.647059 0.647059 1"/>
+    <material name="gripper1_material" rgba="0.647059 0.647059 0.647059 1"/>
+    <material name="gripper2_material" rgba="0.647059 0.647059 0.647059 1"/>
+  </asset>
+  <actuator>
+    <position class="apto_arm" name="1" joint="1" inheritrange="1"/>
+    <position class="apto_arm" name="2" joint="2" inheritrange="1"/>
+    <position class="apto_arm" name="3" joint="3" inheritrange="1"/>
+    <position class="apto_arm" name="4" joint="4" inheritrange="1"/>
+    <position class="apto_arm" name="5" joint="5" inheritrange="1"/>
+    <position class="apto_arm" name="6" joint="6" inheritrange="1"/>
+    <position class="apto_arm" name="gripper" joint="gripper" inheritrange="1"/>
+  </actuator>
+  <equality>
+    <joint joint1="gripper2" joint2="gripper" polycoef="0 -1.0 0 0 0"/>
+  </equality>
+</mujoco>
