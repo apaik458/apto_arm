@@ -11,10 +11,11 @@ class AptoNode:
         self.kD = 32
         self.curr_lim = 500     # 500 * 0.0065A = 3.25A
         self.prev_pos = self.pos = self.curr_pos = np.zeros(7)
+        self.prev_vel = self.vel = self.curr_vel = np.zeros(7)
         self.motors = [1, 2, 3, 4, 5, 6, 7]
 
         # Connect to arm
-        self.apto_client = AptoClient(self.motors, 'COM4', 1000000)
+        self.apto_client = AptoClient(self.motors, '/dev/ttyACM0', 1000000)
         self.apto_client.connect()
 
         # Set the default parameters
@@ -24,6 +25,9 @@ class AptoNode:
         self.apto_client.sync_write(self.motors, np.ones(len(self.motors)) * self.kD, 22, 2) # Dgain damping
         self.apto_client.sync_write(self.motors, np.ones(len(self.motors)) * self.curr_lim, 28, 2) # 500 normal limit or 350 for lite limit
         
+        # Set operating mode
+        self.apto_client.sync_write(self.motors, np.ones(7), STS_MODE, 0) # 0 = position control, 1 = velocity control
+
         # Command a position
         self.apto_client.write_desired_pos(self.motors, self.curr_pos)
 
@@ -32,10 +36,20 @@ class AptoNode:
         self.prev_pos = self.curr_pos
         self.curr_pos = np.array(pose)
         self.apto_client.write_desired_pos(self.motors, self.curr_pos)
+    
+    # set target velocities for the joints (rad/s)
+    def set_vel(self, vel):
+        self.prev_vel = self.curr_vel
+        self.curr_vel = np.array(vel)
+        self.apto_client.write_desired_vel(self.motors, self.curr_vel)
 
     # read position of robot joints
     def read_pos(self):
         return self.apto_client.read_pos()
+    
+    # read velocity of robot joints
+    def read_vel(self):
+        return self.apto_client.read_vel()
 
 def main():
     apto_arm = AptoNode()

@@ -21,3 +21,5 @@ The main.py file shows an example usage of the API
 ```
 python main.py
 ```
+
+Note: If getting "Permission denied: '/dev/ttyACM0'" error on Linux, change port permission with ```sudo chmod a+rw /dev/ttyACM0``` command

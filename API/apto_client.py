@@ -7,6 +7,8 @@ import atexit
 # Data Byte Length
 LEN_PRESENT_POSITION = 2
 LEN_GOAL_POSITION    = 2
+LEN_PRESENT_SPEED    = 2
+LEN_GOAL_SPEED       = 2
 
 
 def cleanup_handler():
@@ -42,6 +44,15 @@ def pos_scale_vta(value):
     """Converts from motor values to joint angles"""
     return -value * (2 * np.pi / 4096) + np.pi
 
+## Conversions (0 -> 3400 = 0 -> 1.659pi), (50 steps per second = 0.732 RPM)
+def vel_scale_stv(angle):
+    """Converts from joint speeds to motor values"""
+    return (angle / (1.659*np.pi)) * 3400
+
+def vel_scale_vts(value):
+    """Converts from motor values to joint speeds"""
+    return (value / 3400) * (1.659*np.pi)
+
 
 class AptoClient:
     """
@@ -53,7 +64,7 @@ class AptoClient:
     
     def __init__(self,
                  motor_ids,
-                 port: str = 'COM4',
+                 port: str = '/dev/ttyACM0',
                  baudrate = 1000000):
         """Initialises a new client"""
         
@@ -65,6 +76,11 @@ class AptoClient:
         self.packet_handler = sts(self.port_handler)
 
         self._pos_reader = AptoPosReader(
+            self,
+            self.motor_ids
+        )
+
+        self._vel_reader = AptoVelReader(
             self,
             self.motor_ids
         )
@@ -128,7 +144,7 @@ class AptoClient:
             retries -= 1
 
     def read_pos(self):
-        """Returns the current positions and velocities"""
+        """Returns the current positions"""
         return self._pos_reader.read().round(3)
     
     def write_desired_pos(self, motor_ids, positions):
@@ -137,6 +153,19 @@ class AptoClient:
         
         positions = pos_scale_atv(positions)
         self.sync_write(motor_ids, positions, STS_GOAL_POSITION_L, LEN_GOAL_POSITION)
+    
+    def read_vel(self):
+        """Returns the current velocities"""
+        return self._vel_reader.read().round(3)
+
+    def write_desired_vel(self, motor_ids, velocities):
+        """Writes the given desired velocities"""
+        assert len(motor_ids) == len(velocities)
+        
+        velocities = vel_scale_stv(velocities)
+        # handle negative velocities
+        velocities = [int(-v)|0b1000000000000000 if v<0 else v for v in velocities]
+        self.sync_write(motor_ids, velocities, STS_GOAL_SPEED_L, LEN_GOAL_SPEED)
 
     def write_byte(self, motor_ids, value, address):
         """Writes a value to the motors"""
@@ -293,6 +322,37 @@ class AptoPosReader(AptoReader):
     def _get_data(self):
         """Returns a copy of the data"""
         return self._pos_data.copy()
+
+class AptoVelReader(AptoReader):
+    """Reads velocities"""
+
+    def __init__(self,
+                 client,
+                 motor_ids):
+        super().__init__(
+            client,
+            motor_ids,
+            address=STS_PRESENT_SPEED_L,
+            size=LEN_PRESENT_SPEED,
+        )
+
+    def _initialise_data(self):
+        """Initialises the cached data"""
+        self._vel_data = np.zeros(len(self.motor_ids), dtype=np.float32)
+
+    def _update_data(self, index, motor_id):
+        """Updates the data index for the given motor ID"""
+        vel = self.operation.getData(motor_id, STS_PRESENT_SPEED_L, LEN_PRESENT_SPEED)
+        
+        if vel&0b1000000000000000:
+            vel &= 0b0111111111111111
+            vel *= -1
+        # vel = unsigned_to_signed(vel, size=4)
+        self._vel_data[index] = vel_scale_vts(vel)
+    
+    def _get_data(self):
+        """Returns a copy of the data"""
+        return self._vel_data.copy()
 
 # Register global cleanup function.
 atexit.register(cleanup_handler)
