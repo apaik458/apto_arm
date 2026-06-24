@@ -1,4 +1,4 @@
-# Apto Arm
+# Waveshare Servo Arm
 
 A 3D-printed 6-DoF robot arm for robotic manipulation experiments
 
